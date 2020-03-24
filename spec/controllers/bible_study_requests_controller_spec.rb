@@ -3,6 +3,29 @@
 require 'rails_helper'
 
 RSpec.describe BibleStudyRequestsController, type: :controller do
+  describe '#index' do
+    xit 'is only accessible via http basic auth' do
+      ENV['HTTP_BASIC_AUTH'] = 'foo:bar'
+
+      authorization = ActionController::HttpAuthentication::Basic.encode_credentials(
+        'foo',
+        'bar'
+      )
+
+      request.env['HTTP_AUTHORIZATION'] = authorization
+
+      get :index
+
+      expect(response).to be_successful
+    end
+
+    it 'responds with 401' do
+      get :index
+
+      expect(response.status).to eq 401
+    end
+  end
+
   describe 'GET #new' do
     it 'assigns cid' do
       get :new, params: { cid: 'the-cid' }
@@ -28,7 +51,7 @@ RSpec.describe BibleStudyRequestsController, type: :controller do
     it 'renders :new' do
       get :new, params: { cid: 'the-cid' }
 
-      expect(subject).to have_rendered(:new)
+      expect(controller).to have_rendered(:new)
     end
   end
 
@@ -68,7 +91,7 @@ RSpec.describe BibleStudyRequestsController, type: :controller do
       it 're-renders :new' do
         post :create, params: { visitor: new_visitor_params.except(:name) }
 
-        expect(subject).to render_template(:new)
+        expect(controller).to render_template(:new)
       end
     end
   end

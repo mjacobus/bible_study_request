@@ -1,0 +1,28 @@
+language: ruby
+sudo: false
+cache: bundler
+
+rvm:
+  - 2.6.5
+
+env:
+  - DB=pg DATABASE_URL="postgres://postgres@localhost:5432/bible_study_test"
+
+before_script:
+  - psql -c 'create database bible_study_test;' -U postgres
+  - bundle exec rake db:migrate
+
+script:
+  - RAILS_ENV=test bundle exec rspec
+  - bundle exec rubocop --version
+  - bundle exec rubocop -a
+
+services:
+  - mysql
+
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+      - postgresql-10
+      - postgresql-client-10
