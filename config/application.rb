@@ -22,6 +22,6 @@ module BibleStudy
       generate.view_specs false
     end
 
-    # config.i18n.default_locale = "pt-BR"
+    config.i18n.default_locale = :"pt-BR"
   end
 end

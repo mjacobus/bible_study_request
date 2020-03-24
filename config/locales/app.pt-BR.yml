@@ -1,0 +1,9 @@
+---
+pt-BR:
+  activerecord:
+    attributes:
+      visitor:
+        name: "Nome"
+        email: "email"
+        phone: "Telefone"
+        message: "Mensagem"
