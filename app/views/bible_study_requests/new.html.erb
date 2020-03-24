@@ -1,1 +1,17 @@
 <h1>Peça um estudo bíblico</h1>
+
+<% if params[:requested] %>
+  Obrigado! Entraremos em contato em breve.
+<% end %>
+
+<% unless params[:requested] %>
+  <%= simple_form_for(@visitor, url: new_bible_study_request_path) do |f| %>
+    <%= f.input :uuid, as: :hidden %>
+    <%= f.input :cid, as: :hidden %>
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.input :phone %>
+    <%= f.input :message %>
+    <%= f.button :submit, value: 'Solicitar informações' %>
+  <% end %>
+<% end %>

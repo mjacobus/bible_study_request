@@ -12,7 +12,11 @@ class BibleStudyRequestsController < ApplicationController
 
   def create
     @visitor = Visitor.new(visitor_params)
-    @visitor.save!
+    if @visitor.save
+      redirect_to new_bible_study_request_path(requested: true)
+      return
+    end
+    render :new
   end
 
   private
