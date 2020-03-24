@@ -1,0 +1,13 @@
+<% @visitors.each do |visitor|  %>
+  <p>
+    Nome: <%= visitor.name %><br>
+    Email: <%= visitor.email %><br>
+    Telefone: <%= visitor.phone %><br>
+    CID: <%= visitor.cid %><br>
+    UUID: <%= visitor.uuid %><br>
+  </p>
+  <p>
+    <%= visitor.message %>
+  </p>
+  <hr>
+<% end %>

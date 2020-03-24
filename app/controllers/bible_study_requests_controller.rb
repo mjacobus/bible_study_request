@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class BibleStudyRequestsController < ApplicationController
+  def index
+    @visitors = Visitor.all
+  end
+
   def new
     cookies[:cid] ||= params[:cid]
 
