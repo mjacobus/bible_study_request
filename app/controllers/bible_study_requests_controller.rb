@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class BibleStudyRequestsController < ApplicationController
+  unless Rails.env.development?
+    http_basic_authenticate_with(
+      name: ENV['HTTP_BASIC_AUTH'].split(':').first,
+      password: ENV['HTTP_BASIC_AUTH'].split(':').last,
+      only: :index
+    )
+  end
+
   def index
     @visitors = Visitor.all
   end

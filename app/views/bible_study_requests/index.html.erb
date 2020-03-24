@@ -5,9 +5,10 @@
     Telefone: <%= visitor.phone %><br>
     CID: <%= visitor.cid %><br>
     UUID: <%= visitor.uuid %><br>
+    Data: <%= visitor.created_at %>
   </p>
-  <p>
+  <pre>
     <%= visitor.message %>
-  </p>
+  </pre>
   <hr>
 <% end %>
