@@ -23,7 +23,8 @@ class BibleStudyRequestsController < ApplicationController
       :email,
       :name,
       :phone,
-      :cid
+      :cid,
+      :message
     )
   end
 end

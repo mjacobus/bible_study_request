@@ -33,7 +33,8 @@ RSpec.describe BibleStudyRequestsController, type: :controller do
         email: 'the-email',
         name: 'the-name',
         phone: 'the-phone',
-        cid: 'the-cid'
+        cid: 'the-cid',
+        message: 'the-message'
       }
     end
 
@@ -41,6 +42,12 @@ RSpec.describe BibleStudyRequestsController, type: :controller do
       expect do
         post :create, params: { visitor: new_visitor_params }
       end.to change(Visitor, :count).by(1)
+
+      visitor = Visitor.last
+      visitor_attributes = visitor.attributes
+        .symbolize_keys
+        .slice(*new_visitor_params.keys)
+      expect(visitor_attributes).to eq(new_visitor_params)
     end
   end
 end
