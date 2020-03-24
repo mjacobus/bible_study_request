@@ -1,8 +1,9 @@
-<h1>Peça um estudo bíblico</h1>
+<h1>Solicite um estudo gratuíto por Skype</h1>
 
 <% if params[:requested] %>
   Obrigado! Entraremos em contato em breve.
 <% end %>
+
 
 <% unless params[:requested] %>
   <%= simple_form_for(@visitor, url: new_bible_study_request_path) do |f| %>
@@ -15,3 +16,12 @@
     <%= f.button :submit, value: 'Solicitar informações' %>
   <% end %>
 <% end %>
+
+
+<p>Assista o vídeo
+  <a target="_blank" href="https://bit.ly/39hkmwq">Por que estudar a Bíblia?</a>
+</p>
+
+<p>Assista o vídeo
+  <a target="_blank" href="https://bit.ly/39cLEDV">Como é um estudo bíblico </a>
+</p>
