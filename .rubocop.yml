@@ -40,6 +40,15 @@ Naming/RescuedExceptionsVariableName:
 Style/FormatStringToken:
   EnforcedStyle: template
 
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
 RSpec:
   Exclude:
     - 'spec/factories/**/*'
