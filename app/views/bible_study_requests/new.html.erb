@@ -1,4 +1,4 @@
-<h3>Estude a Bíblia pelo Skype</h3>
+<h1>Estude a Bíblia pelo Skype</h1>
 
 <% if params[:requested] %>
   <div class="alert alert-primary" role="alert">
@@ -19,19 +19,20 @@
     <li>Veja outros assuntos <a href="https://www.jw.org/pt/biblioteca/livros/estudo-da-biblia/">aqui</a></li>
   </ul>
 
-  <p>Para solicitar um estudo, basta enviar o formulário.</p>
-
   <% unless params[:requested] %>
-    <%= simple_form_for(@visitor, url: new_bible_study_request_path) do |f| %>
-      <%= f.input :uuid, as: :hidden %>
-      <%= f.input :cid, as: :hidden %>
-      <%= f.input :name %>
-      <%= f.input :email %>
-      <%= f.input :phone %>
-      <%= f.input :message, placeholder: "Deixe sua mensagem aqui." %>
-      <%= f.button :submit, value: 'Solicitar informações', class: 'btn-primary' %>
+    <p><strong>Para solicitar um estudo, basta enviar o formulário.</strong></p>
+    <fieldset>
+      <%= simple_form_for(@visitor, url: new_bible_study_request_path) do |f| %>
+        <%= f.input :uuid, as: :hidden %>
+        <%= f.input :cid, as: :hidden %>
+        <%= f.input :name %>
+        <%= f.input :email %>
+        <%= f.input :phone %>
+        <%= f.input :message, placeholder: "Dúvida? Deixe sua mensagem ou pergunta aqui." %>
+        <%= f.button :submit, value: 'Solicitar estudo ou Informações', class: 'btn-primary' %>
+      <% end %>
     <% end %>
-  <% end %>
+    </fieldset>
 <% end %>
 
 <hr>

@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+fieldset {
+  background: #eee;
+  padding: 10px;
+}
+
+legend {
+  font-size: 20px;
+}
+
+h1 {
+  padding-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
