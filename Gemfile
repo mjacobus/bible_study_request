@@ -10,6 +10,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'sass-rails', '>= 6'
+gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 
 gem 'bootsnap', '>= 1.4.2', require: false
