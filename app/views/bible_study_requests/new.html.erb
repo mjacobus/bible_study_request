@@ -1,27 +1,57 @@
-<h1>Solicite um estudo gratuíto por Skype</h1>
+<h3>Estude a Bíblia pelo Skype</h3>
 
 <% if params[:requested] %>
-  Obrigado! Entraremos em contato em breve.
-<% end %>
+  <div class="alert alert-primary" role="alert">
+    Obrigado! Entrarei em contato em breve.
+  </div>
+<% else %>
+  <p>Solicite o seu estudo bíblico e aprenda:</p>
 
+  <ul>
+    <li>O que acontece quando morremos?</li>
+    <li>Por que Deus permite o sofrimento?</li>
+    <li>Estamos vivendo um cumprimento de profecias?</li>
+    <li>O que esperar do futuro?</li>
+    <li>Será que os mortos podem voltar a viver?</li>
+    <li>Podemos mesmo acreditar na Bíblia?</li>
+    <li>Veja outros assuntos <a href="https://www.jw.org/pt/biblioteca/livros/estudo-da-biblia/">aqui</a></li>
+  </ul>
 
-<% unless params[:requested] %>
-  <%= simple_form_for(@visitor, url: new_bible_study_request_path) do |f| %>
-    <%= f.input :uuid, as: :hidden %>
-    <%= f.input :cid, as: :hidden %>
-    <%= f.input :name %>
-    <%= f.input :email %>
-    <%= f.input :phone %>
-    <%= f.input :message %>
-    <%= f.button :submit, value: 'Solicitar informações' %>
+  <p>Para solicitar um estudo, basta enviar o formulário.</p>
+
+  <% unless params[:requested] %>
+    <%= simple_form_for(@visitor, url: new_bible_study_request_path) do |f| %>
+      <%= f.input :uuid, as: :hidden %>
+      <%= f.input :cid, as: :hidden %>
+      <%= f.input :name %>
+      <%= f.input :email %>
+      <%= f.input :phone %>
+      <%= f.input :message, placeholder: "Deixe sua mensagem aqui." %>
+      <%= f.button :submit, value: 'Solicitar informações', class: 'btn-primary' %>
+    <% end %>
   <% end %>
 <% end %>
 
+<hr>
 
-<p>Assista o vídeo
-  <a target="_blank" href="https://bit.ly/39hkmwq">Por que estudar a Bíblia?</a>
-</p>
+<div class="row">
+  <div class="col-lg-12">
+    <p> Assista os vídeos: </p>
 
-<p>Assista o vídeo
-  <a target="_blank" href="https://bit.ly/39cLEDV">Como é um estudo bíblico </a>
-</p>
+    <ul>
+      <li><a target="_blank" href="https://bit.ly/39hkmwq">Por que estudar a Bíblia?</a></li>
+      <li><a target="_blank" href="https://bit.ly/39cLEDV">Como é um estudo bíblico </a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <p>Veja também:</p>
+
+    <ul>
+      <li><a target="_blank" href="https://www.jw.org/pt/ensinos-biblicos/perguntas/">Perguntas Bíblicas respondidas</a></li>
+    </ul>
+  </div>
+</div>
+
