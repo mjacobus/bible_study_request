@@ -27,11 +27,26 @@ RSpec.describe Visitor, type: :model do
     expect(visitor.cid).to eq(attributes[:cid])
   end
 
-  it 'is valid with only uuid' do
-    expect(described_class.new(uuid: 'uuid')).to be_valid
+  it 'requires uuid' do
+    expect(described_class.new(attributes.except(:uuid))).not_to be_valid
   end
 
-  it 'requires uuid' do
-    expect(described_class.new).not_to be_valid
+  it 'requires name' do
+    expect(described_class.new(attributes.except(:name))).not_to be_valid
+  end
+
+  it 'requires email or phone' do
+    visitor = described_class.new(attributes.except(:email, :phone))
+    expect(visitor).not_to be_valid
+    expect(visitor.errors[:phone]).not_to be_empty
+    expect(visitor.errors[:email]).not_to be_empty
+  end
+
+  it 'is valid with only phone' do
+    expect(described_class.new(attributes.except(:email))).to be_valid
+  end
+
+  it 'is valid with only email' do
+    expect(described_class.new(attributes.except(:phone))).to be_valid
   end
 end
