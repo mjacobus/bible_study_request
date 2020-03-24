@@ -3,8 +3,8 @@
 class BibleStudyRequestsController < ApplicationController
   unless Rails.env.development?
     http_basic_authenticate_with(
-      name: ENV['HTTP_BASIC_AUTH'].split(':').first,
-      password: ENV['HTTP_BASIC_AUTH'].split(':').last,
+      name: ENV['HTTP_BASIC_AUTH'].to_s.split(':').first,
+      password: ENV['HTTP_BASIC_AUTH'].to_s.split(':').last,
       only: :index
     )
   end
@@ -14,11 +14,9 @@ class BibleStudyRequestsController < ApplicationController
   end
 
   def new
-    cookies[:cid] ||= params[:cid]
-
     @visitor = Visitor.new(
-      cid: cookies[:cid],
-      uuid: Uuid.new.to_s
+      cid: cid,
+      uuid: uuid
     )
   end
 
@@ -42,5 +40,13 @@ class BibleStudyRequestsController < ApplicationController
       :cid,
       :message
     )
+  end
+
+  def cid
+    cookies[:cid] ||= params[:cid]
+  end
+
+  def uuid
+    session[:uuid] ||= Uuid.new.to_s
   end
 end
